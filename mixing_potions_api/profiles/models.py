@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 
-#Customized profile model
+#Customized Profile model
 class Profile(models.Model):
     # Provided user status choices that will be linked to user
     # activity
@@ -28,7 +28,7 @@ class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255) 
-    age = models.PositiveIntegerField()
+    age = models.PositiveIntegerField(null=True, blank=True)
     about = models.TextField(max_length=500, blank=True)
     nickname = models.CharField(max_length=50, unique=True)
     email = models.EmailField(unique=True)
