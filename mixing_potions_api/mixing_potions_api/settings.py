@@ -35,7 +35,7 @@ SECRET_KEY = 'django-insecure-tyxkyxl9nv8-*$9g_6y=fjvd)@249*k)^k=9d3h*fxkdna+un#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-mtopircean-mixingpotion-5jphsz1i8n6.ws-eu107.gitpod.io']
 
 
 # Application definition
