@@ -4,6 +4,7 @@ from rest_framework import status
 from .models import Profile
 from .serializers import ProfileSerializer
 from django.http import Http404
+from .permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(APIView):
@@ -13,6 +14,7 @@ class ProfileList(APIView):
         return Response(serializer.data)
     
 class ProfileDetail(APIView):
+    permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ProfileSerializer
     def get_object(self, pk):
         try:

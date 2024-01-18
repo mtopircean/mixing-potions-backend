@@ -12,3 +12,4 @@ class ProfileSerializer(serializers.ModelSerializer):
             'age', 'about', 'nickname', 'email', 'phone_number', 
             'member_since', 'updated_at', 'image'
         ]
+        read_only_fields = ['user_status']
