@@ -4,7 +4,7 @@ from rest_framework import status
 from .models import Profile
 from .serializers import ProfileSerializer
 from django.http import Http404
-from .permissions import IsOwnerOrReadOnly
+from mixing_potions_api.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(APIView):
@@ -18,7 +18,9 @@ class ProfileDetail(APIView):
     serializer_class = ProfileSerializer
     def get_object(self, pk):
         try:
-            return Profile.objects.get(pk=pk)
+            profile = Profile.objects.get(pk=pk)
+            self.check_object_permissions(self.request, profile)
+            return profile
         except:
             raise Http404
         
