@@ -1,11 +1,17 @@
 from rest_framework import serializers
 from .models import Post
+from products.models import Product
 from products.serializers import ProductSerializer
+
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     owner_nickname = serializers.SerializerMethodField()
-    products = ProductSerializer(many=True, read_only=True)
+    products = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Product.objects.all(),
+        write_only=True
+    )
     
     class Meta:
         
@@ -17,3 +23,8 @@ class PostSerializer(serializers.ModelSerializer):
         
     def get_owner_nickname(self, obj):
         return obj.get_owner_nickname()
+    
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['products'] = ProductSerializer(instance.products.all(), many=True).data
+        return representation
