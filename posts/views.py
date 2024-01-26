@@ -1,4 +1,5 @@
 from rest_framework.views import APIView
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Post
@@ -7,12 +8,14 @@ from django.http import Http404
 from mixing_potions_api.permissions import IsOwnerOrReadOnly
 
 
-class PostList(APIView):
-    def get(self, request):
-        posts = Post.objects.all()
-        serializer = PostSerializer(posts, many=True)
-        return Response(serializer.data)
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [IsOwnerOrReadOnly]
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+        
 class PostDetail(APIView):
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
