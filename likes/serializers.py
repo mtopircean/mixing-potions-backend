@@ -5,10 +5,14 @@ from posts.models import Post
 
 class LikeSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    title = serializers.SerializerMethodField()
     
     class Meta:   
         model = Like
-        fields = ['id', 'owner', 'post', 'created_at']
+        fields = ['id', 'owner', 'post', 'title', 'created_at']
+        
+    def get_title(self, obj):
+        return obj.post.title
         
     def validate(self, data):
         owner_id = self.context['request'].user.id
