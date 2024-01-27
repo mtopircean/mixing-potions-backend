@@ -6,6 +6,6 @@ from rest_framework.response import Response
 
 @api_view()
 def root_route(request):
-    return Response(
-        "message": "Welcome to your better life! This is Mixing potions API!"
-    )
+    return Response({
+        "message":"Welcome to my a healthy new life!"
+    })
