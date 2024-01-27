@@ -7,6 +7,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     followers = serializers.SerializerMethodField()
     following = serializers.SerializerMethodField()
+    followers_count = serializers.ReadOnlyField()
+    following_count = serializers.ReadOnlyField()
     
     class Meta:
         
@@ -15,7 +17,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             'id', 'user_status', 'owner', 'first_name', 'last_name', 
             'age', 'about', 'nickname', 'email', 'phone_number', 
             'member_since', 'updated_at', 'image', 'followers',
-            'following',
+            'following', 'followers_count', 'following_count',
         ]
         read_only_fields = ['user_status']
         
