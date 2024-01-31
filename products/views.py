@@ -19,7 +19,7 @@ class ProductList(generics.ListCreateAPIView):
     ordering_fields = ['name', 'condition__name', 'body_systems__name']
     search_fields = ['name', 'condition__name', 'body_systems__name']
     
-class ProductDetail(generics.RetrieveUpdateAPIView):
+class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
