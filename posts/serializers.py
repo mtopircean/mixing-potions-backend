@@ -9,6 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     owner_nickname = serializers.SerializerMethodField()
     liked_by = serializers.SerializerMethodField()
+    is_owner = serializers.SerializerMethodField()
     products = serializers.PrimaryKeyRelatedField(
         many=True,
         queryset=Product.objects.all(),
@@ -21,7 +22,12 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'description', 'created_at', 'updated_at',
             'image', 'owner', 'owner_nickname', 'products', 'liked_by',
+            'is_owner',
         ]
+    
+    def get_is_owner(self, obj):
+        request = self.context.get('request')
+        return request and request.user == obj.owner
         
     def get_owner_nickname(self, obj):
         return obj.get_owner_nickname()
