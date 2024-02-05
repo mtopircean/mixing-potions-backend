@@ -17,6 +17,7 @@ class CommentSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     owner_profile = ProfileSerializer(source='owner.profile', read_only=True)
+    # Serialize the owner's profile.
     post_url = serializers.HyperlinkedRelatedField(
         read_only=True,
         view_name='post-detail',
@@ -26,10 +27,16 @@ class CommentSerializer(serializers.ModelSerializer):
     updated_at = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
+        """
+        Check if the request user is the owner of the comment.
+        """
         request = self.context.get('request')
         return request and request.user == obj.owner
 
     def get_created_at(self, obj):
+        """
+        Return a friendlier representation of the creation time.
+        """
         return naturaltime(obj.created_at)
 
     def get_updated_at(self, obj):

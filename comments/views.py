@@ -9,12 +9,20 @@ class CommentList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
+        """
+        Optionally filter the comments list by
+        'post_id' or 'user_id' query parameters.
+        """
         queryset = Comment.objects.all().select_related('owner', 'post')
+        # Get 'post_id' from query params if present.
         post_id = self.request.query_params.get('post_id')
+        # Get 'user_id' from query params if present.
         user_id = self.request.query_params.get('user_id')
         if post_id is not None:
+            # Filter queryset by 'post_id' if provided.
             queryset = queryset.filter(post_id=post_id)
         elif user_id is not None:
+            # Filter queryset by 'user_id' if provided.
             queryset = queryset.filter(owner_id=user_id)
         return queryset
 
