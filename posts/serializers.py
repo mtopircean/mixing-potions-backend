@@ -7,7 +7,9 @@ from likes.models import Like
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    # Get the owner's nickname.
     owner_nickname = serializers.SerializerMethodField()
+    # Get list of users who liked the post.
     liked_by = serializers.SerializerMethodField()
     is_owner = serializers.SerializerMethodField()
     products = serializers.PrimaryKeyRelatedField(
@@ -36,7 +38,14 @@ class PostSerializer(serializers.ModelSerializer):
         return [like.owner.username for like in obj.likes.all()]
 
     def to_representation(self, instance):
+        """
+        Customize how post is rendered in order to include detailed
+        information about the product, not just the products id.
+        """
+        # Obtain the default serialized representation of the instance.
         representation = super().to_representation(instance)
+        # serializes all products associated with a Post instance
+        # into detailed data to the products key in the representation
         representation['products'] = ProductSerializer(
             instance.products.all(), many=True
         ).data

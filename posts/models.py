@@ -24,5 +24,10 @@ class Post(models.Model):
         return f'{self.id} {self.title}'
 
     def get_owner_nickname(self):
+        """
+        Retrieves the nickname of the post's owner from their profile.
+        """
+        # Query the profile of the post's owner.
         profile = Profile.objects.filter(owner=self.owner).first()
+        # Return the nickname if the profile exists
         return profile.nickname if profile else None
