@@ -7,6 +7,7 @@ from profiles.models import Profile
 class FollowerSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     followed_name = serializers.ReadOnlyField(source='followed.username')
+    # Custom method field to get the followed user's nickname
     followed_nickname = serializers.SerializerMethodField()
 
     class Meta:
@@ -15,10 +16,17 @@ class FollowerSerializer(serializers.ModelSerializer):
                   'followed_nickname', 'created_at']
 
     def get_followed_nickname(self, obj):
+        """
+        Retrieve the nickname of the followed user from their profile.
+        """
         profile = Profile.objects.filter(owner=obj.followed).first()
         return profile.nickname if profile else None
 
     def validate(self, data):
+        """
+        Custom validation to prevent users from following themselves
+        and to ensure a user is not followed more than once.
+        """
         owner_id = self.context['request'].user.id
         followed_id = data.get('followed').id
 
