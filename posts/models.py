@@ -11,7 +11,7 @@ class Post(models.Model):
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    products = models.ManyToManyField(Product, blank=True)
+    products = models.ManyToManyField(Product, blank=True,)
 
     image = models.ImageField(
         upload_to='images/', default='../default_post_image_vf1akc', blank=True

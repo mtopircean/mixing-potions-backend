@@ -47,30 +47,8 @@ class ProductSerializer(serializers.ModelSerializer):
         slug_field='name',
         queryset=BodySystem.objects.all()
     )
-    # Custom field to serialize posts where the product is used.
-    posts_used_in = PostSerializer(many=True, read_only=True,
-                                   source='get_posts_used_in')
-    # Custom field to serialize profiles of users who used the product.
-    used_by_users = ProfileSerializer(many=True, read_only=True,
-                                      source='get_used_by_users')
 
     class Meta:
         model = Product
         fields = '__all__'
         read_only_fields = ['user_status']
-
-    def get_posts_used_in(self, obj):
-        """
-        Retrieves and serializes posts where the product is used.
-        """
-        posts = Post.objects.filter(products=obj)
-        post_serializer = PostSerializer(posts, many=True)
-        return post_serializer.data
-
-    def get_used_by_users(self, obj):
-        """
-        Retrieves and serializes profiles of users who have used the product.
-        """
-        users = Profile.objects.filter(products_used=obj)
-        profile_serializer = ProfileSerializer(users, many=True)
-        return profile_serializer.data
