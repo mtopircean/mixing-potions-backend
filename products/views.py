@@ -6,19 +6,19 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from mixing_potions_api.permissions import IsOwnerOrReadOnly
 
 
-
 class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAuthenticated, IsAdminUser]
-    
+
     filter_backends = [
         OrderingFilter,
         SearchFilter
         ]
     ordering_fields = ['name', 'condition__name', 'body_systems__name']
     search_fields = ['name', 'condition__name', 'body_systems__name']
-    
+
+
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
