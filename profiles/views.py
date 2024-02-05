@@ -22,17 +22,18 @@ class ProfileList(generics.ListAPIView):
         'followers_count', 'following_count'
     ]
     search_fields = [
-        'user_status', 'first_name', 'last_name', 
+        'user_status', 'first_name', 'last_name',
         'age', 'nickname', 'email', 'phone_number',
     ]
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         ordering = self.request.query_params.get('ordering', None)
         if ordering:
             return queryset.order_by(ordering)
         return queryset
-    
+
+
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
