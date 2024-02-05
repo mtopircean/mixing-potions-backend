@@ -2,6 +2,9 @@ from django.db import models
 
 
 class Condition(models.Model):
+    """
+    Represents a health condition that a product can address.
+    """
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -9,6 +12,10 @@ class Condition(models.Model):
 
 
 class BodySystem(models.Model):
+    """
+    Represents the body system that a product targets or is related to.
+    """
+    # Defines a list of choices for the body system a product can target.
     SYSTEM_CHOICES = [
         ('Nervous & Emotional', 'Nervous & Emotional'),
         ('Respiratory', 'Respiratory'),
@@ -27,6 +34,10 @@ class BodySystem(models.Model):
 
 
 class Product(models.Model):
+    """
+    Represents a product, which can be associated
+    with multiple conditions and body systems.
+    """
     name = models.CharField(max_length=200)
     condition = models.ManyToManyField(Condition)
     body_systems = models.ManyToManyField(BodySystem)
