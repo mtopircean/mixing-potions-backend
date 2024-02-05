@@ -4,15 +4,17 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 
 
-# Customized Profile model
 class Profile(models.Model):
-    # Provided user status choices that will be linked to user
-    # activity
+    """
+    Customized Profile model
+    """
+    # Define constants for user status choices
     USER_STATUS_BASIC = 'basic'
     USER_STATUS_APPRENTICE = 'apprentice'
     USER_STATUS_EXPERIENCED = 'experienced'
     USER_STATUS_MASTER = 'master'
 
+    # Define choices for the user status field
     USER_STATUS_LEVELS = [
         (USER_STATUS_BASIC, 'basic'),
         (USER_STATUS_APPRENTICE, 'apprentice'),
@@ -46,9 +48,12 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.owner}'s profile"
 
-    # Custom save method that sets the profile picture based on
-    # user status
+
     def save(self, *args, **kwargs):
+        """
+        Custom save method that sets the profile picture based on
+        user status
+        """
         if self.user_status == self.USER_STATUS_APPRENTICE:
             self.image = '../apprentice_vcpdlr'
         elif self.user_status == self.USER_STATUS_EXPERIENCED:
