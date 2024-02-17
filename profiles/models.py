@@ -55,11 +55,11 @@ class Profile(models.Model):
         user status
         """
         if self.user_status == self.USER_STATUS_APPRENTICE:
-            self.image = '../apprentice_vcpdlr.png'
+            self.image = 'https://res.cloudinary.com/dgcwnjoh4/image/upload/v1705519725/apprentice_vcpdlr.png'
         elif self.user_status == self.USER_STATUS_EXPERIENCED:
-            self.image = '../experienced_vmfnxw.png'
+            self.image = 'https://res.cloudinary.com/dgcwnjoh4/image/upload/v1705519726/experienced_vmfnxw.png'
         elif self.user_status == self.USER_STATUS_MASTER:
-            self.image = '../master_ebljsl.png'
+            self.image = 'https://res.cloudinary.com/dgcwnjoh4/image/upload/v1705519726/master_ebljsl.png'
         else:
             self.image = '../default_profile_kcxezz.png'
         super(Profile, self).save(*args, **kwargs)
