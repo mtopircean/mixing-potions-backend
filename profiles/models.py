@@ -55,7 +55,7 @@ class Profile(models.Model):
         user status
         """
         if self.user_status == self.USER_STATUS_APPRENTICE:
-            self.image = '../apprentice_vcpdlr'
+            self.image = 'apprentice_vcpdlr.png'
         elif self.user_status == self.USER_STATUS_EXPERIENCED:
             self.image = '../experienced_vmfnxw'
         elif self.user_status == self.USER_STATUS_MASTER:
