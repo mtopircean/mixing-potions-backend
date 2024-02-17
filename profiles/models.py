@@ -55,7 +55,7 @@ class Profile(models.Model):
         user status
         """
         if self.user_status == self.USER_STATUS_APPRENTICE:
-            self.image = 'https://res.cloudinary.com/dgcwnjoh4/image/upload/v1705519725/apprentice_vcpdlr.png'
+            self.image = '../apprentice_vcpdlr'
         elif self.user_status == self.USER_STATUS_EXPERIENCED:
             self.image = '../experienced_vmfnxw'
         elif self.user_status == self.USER_STATUS_MASTER:
