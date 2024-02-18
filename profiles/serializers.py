@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(source='owner.email', read_only=True)
+    username = serializers.CharField(source='owner.username', read_only=True)
     owner = serializers.ReadOnlyField(source='owner.username')
     # Custom field to get list of followers' nicknames.
     followers = serializers.SerializerMethodField()
@@ -23,6 +25,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             'age', 'about', 'nickname', 'phone_number',
             'member_since', 'updated_at', 'image', 'followers',
             'following', 'followers_count', 'following_count',
+            'username', 'email',
         ]
         read_only_fields = ['user_status']
 

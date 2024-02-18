@@ -38,8 +38,16 @@ class Profile(models.Model):
     member_since = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(
-        upload_to='images/', default='../default_profile_kcxezz'
+        upload_to='images/', default='/apprentice_vcpdlr'
     )
+    
+    @property
+    def email(self):
+        return self.owner.email
+
+    @property
+    def username(self):
+        return self.owner.username
 
     class Meta:
         ordering = ['-member_since']
