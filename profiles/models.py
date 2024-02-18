@@ -29,13 +29,13 @@ class Profile(models.Model):
     )
 
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255, blank=True, null=True)
+    last_name = models.CharField(max_length=255, blank=True, null=True)
     age = models.PositiveIntegerField(null=True, blank=True)
-    about = models.TextField(max_length=500, blank=True)
-    nickname = models.CharField(max_length=50, unique=True,  blank=False)
+    about = models.TextField(max_length=500, blank=True, null=True)
+    nickname = models.CharField(max_length=50, unique=True, blank=True, null=True)
     email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=25)
+    phone_number = models.CharField(max_length=25, blank=True, null=True)
     member_since = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(
