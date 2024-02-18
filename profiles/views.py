@@ -23,7 +23,7 @@ class ProfileList(generics.ListAPIView):
     ]
     search_fields = [
         'user_status', 'first_name', 'last_name',
-        'age', 'nickname', 'email', 'phone_number',
+        'age', 'nickname', 'phone_number',
     ]
 
     def get_queryset(self):
