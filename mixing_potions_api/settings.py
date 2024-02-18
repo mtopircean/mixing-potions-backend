@@ -46,6 +46,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # DEBUG = 'DEV' in os.environ
 DEBUG = True
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 ALLOWED_HOSTS = ['8000-mtopircean-mixingpotion-5jphsz1i8n6.ws-eu108.gitpod.io',
                  'localhost',
                  'mixing-potions-drf-api-0a8cbdf11dd2.herokuapp.com']
