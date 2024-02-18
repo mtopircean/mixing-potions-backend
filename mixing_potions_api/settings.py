@@ -43,7 +43,8 @@ REST_AUTH_SERIALIZERS = {
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = 'DEV' in os.environ
+# DEBUG = 'DEV' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-mtopircean-mixingpotion-5jphsz1i8n6.ws-eu108.gitpod.io',
                  'localhost',
