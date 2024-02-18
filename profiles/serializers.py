@@ -25,6 +25,19 @@ class ProfileSerializer(serializers.ModelSerializer):
             'following', 'followers_count', 'following_count',
         ]
         read_only_fields = ['user_status']
+        
+    def validate_email(self, value):
+
+        if User.objects.filter(email=value).exists():
+            raise ValidationError("This email address already exists.")
+        return value
+
+    def validate(self, data):
+
+        email = data.get('email')
+        if email:
+            self.validate_email(email)
+        return data
 
     def get_followers(self, obj):
         """
