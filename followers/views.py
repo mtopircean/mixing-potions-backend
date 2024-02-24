@@ -1,11 +1,12 @@
 from rest_framework import generics, permissions
+from django.http import Http404
 from followers.models import Follower
 from followers.serializers import FollowerSerializer
 from mixing_potions_api.permissions import IsOwnerOrReadOnly
 
 
 class FollowerList(generics.ListCreateAPIView):
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = FollowerSerializer
 
     def get_queryset(self):
@@ -35,5 +36,8 @@ class FollowerDetail(generics.RetrieveDestroyAPIView):
         Retrieve and return the current Follower instance.
         Ensure that the current user is the owner of the follower instance.
         """
-        obj = super().get_object()
+        try:
+            obj = super().get_object()
+        except Follower.DoesNotExist:
+            raise Http404("Follower not found")
         return obj
