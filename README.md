@@ -222,6 +222,20 @@ Link to diagram:
 ## API Endpoints
 
 Application provides the following API endpoints:
+**Endpoint**|**HTTP Method**|**CRUD**|**View Type**|**Permissions**|**Filter/Search**
+:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
+/profiles/|GET|Read (List)|List|Public|Filters: "followers", "following"
+/profiles/int:pk/|GET|Read (Detail)|Detail|Owner| 
+/products/|GET, POST|Read (List), Create (List)|List|Authenticated, Admin|Filters: "name", "condition\_\_name", "body\_systems\_\_name"
+/products/int:pk/|GET, PUT, DELETE|Read (Detail), Update (Detail), Delete (Detail)|Detail|Authenticated, Admin| 
+/posts/|GET, POST|Read (List), Create (List)|List|Authenticated or ReadOnly|Filters: "title", "owner\_\_profile\_\_nickname", "products\_\_name"
+/posts/int:pk/|GET, PUT, DELETE|Read (Detail), Update (Detail), Delete (Detail)|Detail|Owner| 
+/likes/|GET, POST|Read (List), Create (List)|List|Authenticated or ReadOnly| 
+/likes/int:pk/|GET, DELETE|Read (Detail), Delete (Detail)|Detail|Owner| 
+/followers/|GET, POST|Read (List), Create (List)|List|Authenticated| 
+/followers/int:pk/|GET, DELETE|Read (Detail), Delete (Detail)|Detail|Owner| 
+/comments/|GET, POST|Read (List), Create (List)|List|Authenticated or ReadOnly| 
+/comments/int:pk/|GET, PUT, DELETE|Read (Detail), Update (Detail), Delete (Detail)|Detail|Owner| 
 
 ## Technologies Used
 
