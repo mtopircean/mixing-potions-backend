@@ -14,7 +14,6 @@ class ProductAPITests(TestCase):
                                              is_staff=True)
         self.client.force_authenticate(user=self.user)
         self.product = Product.objects.create(name='Product')
-        
 
     def test_retrieve_product(self):
         response = self.client.get(f'/products/{self.product.pk}/')

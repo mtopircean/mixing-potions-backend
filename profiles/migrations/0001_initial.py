@@ -17,18 +17,36 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Profile',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('user_status', models.CharField(choices=[('basic', 'basic'), ('apprentice', 'apprentice'), ('experienced', 'experienced'), ('master', 'master')], default='basic', max_length=20)),
-                ('first_name', models.CharField(blank=True, max_length=255, null=True)),
-                ('last_name', models.CharField(blank=True, max_length=255, null=True)),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID'
+                )),
+                ('user_status', models.CharField(choices=[
+                    ('basic', 'basic'),
+                    ('apprentice', 'apprentice'),
+                    ('experienced', 'experienced'),
+                    ('master', 'master')], default='basic', max_length=20)),
+                ('first_name', models.CharField(
+                    blank=True, max_length=255, null=True)),
+                ('last_name', models.CharField(
+                    blank=True, max_length=255, null=True)),
                 ('age', models.PositiveIntegerField(blank=True, null=True)),
-                ('about', models.TextField(blank=True, max_length=500, null=True)),
-                ('nickname', models.CharField(blank=True, max_length=50, null=True, unique=True)),
-                ('phone_number', models.CharField(blank=True, max_length=25, null=True)),
+                ('about', models.TextField(
+                    blank=True, max_length=500, null=True
+                )),
+                ('nickname', models.CharField(blank=True,
+                 max_length=50, null=True, unique=True)),
+                ('phone_number', models.CharField(
+                    blank=True, max_length=25, null=True)),
                 ('member_since', models.DateField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('image', models.ImageField(default='../default_profile_kcxezz', upload_to='images/')),
-                ('owner', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('image', models.ImageField(
+                    default='../default_profile_kcxezz', upload_to='images/')),
+                ('owner', models.OneToOneField(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'ordering': ['-member_since'],

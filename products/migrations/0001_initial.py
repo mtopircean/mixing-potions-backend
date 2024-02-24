@@ -14,24 +14,49 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BodySystem',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(choices=[('Nervous & Emotional', 'Nervous & Emotional'), ('Respiratory', 'Respiratory'), ('Digestive', 'Digestive'), ('Cardiovascular', 'Cardiovascular'), ('Urinary', 'Urinary'), ('Endocrine and Reproductive', 'Endocrine and Reproductive'), ('Lymphatic/Imune', 'Lymphatic/Imune'), ('Skin and connective tissues', 'Skin and connective tissues'), ('Muscles, bones, ligaments', 'Muscles, bones, ligaments')], max_length=255)),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(choices=[
+                    ('Nervous & Emotional', 'Nervous & Emotional'),
+                    ('Respiratory', 'Respiratory'),
+                    ('Digestive', 'Digestive'),
+                    ('Cardiovascular', 'Cardiovascular'),
+                    ('Urinary', 'Urinary'),
+                    (
+                        'Endocrine and Reproductive',
+                        'Endocrine and Reproductive'
+                    ),
+                    ('Lymphatic/Imune', 'Lymphatic/Imune'),
+                    (
+                        'Skin and connective tissues',
+                        'Skin and connective tissues'
+                    ),
+                    (
+                        'Muscles, bones, ligaments',
+                        'Muscles, bones, ligaments'
+                    )
+                ], max_length=255)),
             ],
         ),
         migrations.CreateModel(
             name='Condition',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
             name='Product',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
-                ('image', models.ImageField(blank=True, default='../product_default_putkpj', upload_to='images/')),
-                ('body_systems', models.ManyToManyField(to='products.BodySystem')),
+                ('image', models.ImageField(blank=True,
+                 default='../product_default_putkpj', upload_to='images/')),
+                (
+                    'body_systems',
+                    models.ManyToManyField(to='products.BodySystem')),
                 ('condition', models.ManyToManyField(to='products.Condition')),
             ],
         ),

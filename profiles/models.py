@@ -33,14 +33,15 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=255, blank=True, null=True)
     age = models.PositiveIntegerField(null=True, blank=True)
     about = models.TextField(max_length=500, blank=True, null=True)
-    nickname = models.CharField(max_length=50, unique=True, blank=True, null=True)
+    nickname = models.CharField(
+        max_length=50, unique=True, blank=True, null=True)
     phone_number = models.CharField(max_length=25, blank=True, null=True)
     member_since = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(
         upload_to='images/', default='../apprentice_vcpdlr'
     )
-    
+
     @property
     def email(self):
         return self.owner.email
@@ -54,7 +55,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.owner}'s profile"
-
 
     def save(self, *args, **kwargs):
         """
