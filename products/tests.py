@@ -20,7 +20,7 @@ class ProductAPITests(TestCase):
     def test_retrieve_product(self):
         response = self.client.get(f'/products/{self.product.pk}/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['name'], self.product.name)
 
     def test_update_product(self):
         new_name = 'New Name'
