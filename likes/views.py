@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions
 from likes.models import Like
 from likes.serializers import LikeSerializer
+from mixing_potions_api.permissions import IsOwnerOrReadOnly
 
 
 class LikeList(generics.ListCreateAPIView):
@@ -15,10 +16,8 @@ class LikeList(generics.ListCreateAPIView):
 class LikeDetail(generics.RetrieveDestroyAPIView):
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsOwnerOrReadOnly]
 
     def get_object(self):
         obj = super().get_object()
-        if obj.owner != self.request.user:
-            raise permissions.PermissionDenied()
         return obj
