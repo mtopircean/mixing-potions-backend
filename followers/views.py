@@ -1,13 +1,16 @@
 from rest_framework import generics, permissions
 from followers.models import Follower
 from followers.serializers import FollowerSerializer
+from mixing_potions_api.permissions import IsOwnerOrReadOnly
 
 
 class FollowerList(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsOwnerOrReadOnly]
     serializer_class = FollowerSerializer
 
     def get_queryset(self):
+        if self.request.user.is_staff:
+            return Follower.objects.all()
         return Follower.objects.filter(owner=self.request.user)
 
     def perform_create(self, serializer):
@@ -16,7 +19,7 @@ class FollowerList(generics.ListCreateAPIView):
 
 class FollowerDetail(generics.RetrieveDestroyAPIView):
     serializer_class = FollowerSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsOwnerOrReadOnly]
 
     def get_queryset(self):
         """
@@ -31,6 +34,4 @@ class FollowerDetail(generics.RetrieveDestroyAPIView):
         Ensure that the current user is the owner of the follower instance.
         """
         obj = super().get_object()
-        if obj.owner != self.request.user:
-            raise permissions.PermissionDenied()
         return obj
