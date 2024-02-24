@@ -13,9 +13,8 @@ class ProductAPITests(TestCase):
                                              password='1234',
                                              is_staff=True)
         self.client.force_authenticate(user=self.user)
-        self.product = Product.objects.create(name='Product',
-                                              condition='Headache',
-                                              body_systems='BodySystem1,BodySystem2')
+        self.product = Product.objects.create(name='Product')
+        
 
     def test_retrieve_product(self):
         response = self.client.get(f'/products/{self.product.pk}/')
