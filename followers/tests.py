@@ -27,6 +27,7 @@ class FollowerAPITests(TestCase):
     def test_delete_follower(self):
         another_user = User.objects.create_user(username='anotheruser',
                                                 password='password123')
-        follower = Follower.objects.create(owner=self.user, followed=another_user)
+        follower = Follower.objects.create(
+            owner=self.user, followed=another_user)
         response = self.client.delete(f'/followers/{follower.pk}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
