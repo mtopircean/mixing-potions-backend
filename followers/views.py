@@ -26,6 +26,8 @@ class FollowerDetail(generics.RetrieveDestroyAPIView):
         Return a list of all followers for the current user,
         used to check object permissions.
         """
+        if self.request.user.is_staff:
+            return Follower.objects.all()
         return Follower.objects.filter(owner=self.request.user)
 
     def get_object(self):
