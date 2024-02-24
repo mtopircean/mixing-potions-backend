@@ -5,9 +5,12 @@ from profiles.models import Profile
 
 
 class FollowerSerializer(serializers.ModelSerializer):
+    """
+    Serializes follower information including owner
+    and followed user's usernames and nicknames.
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     followed_name = serializers.ReadOnlyField(source='followed.username')
-    # Custom method field to get the followed user's nickname
     followed_nickname = serializers.SerializerMethodField()
 
     class Meta:

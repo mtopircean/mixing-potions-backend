@@ -30,10 +30,7 @@ class FollowerDetail(generics.RetrieveDestroyAPIView):
         Retrieve and return the current Follower instance.
         Ensure that the current user is the owner of the follower instance.
         """
-        # Retrieve the Follower instance.
         obj = super().get_object()
         if obj.owner != self.request.user:
-            # If the current user is not the owner of
-            # the follower instance, deny access.
             raise permissions.PermissionDenied()
         return obj

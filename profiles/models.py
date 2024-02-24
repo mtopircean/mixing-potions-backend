@@ -6,15 +6,15 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     """
-    Customized Profile model
+    Customized Profile model which:
+    Define constants for user status choices,
+    Define choices for the user status field
     """
-    # Define constants for user status choices
     USER_STATUS_BASIC = 'basic'
     USER_STATUS_APPRENTICE = 'apprentice'
     USER_STATUS_EXPERIENCED = 'experienced'
     USER_STATUS_MASTER = 'master'
 
-    # Define choices for the user status field
     USER_STATUS_LEVELS = [
         (USER_STATUS_BASIC, 'basic'),
         (USER_STATUS_APPRENTICE, 'apprentice'),
@@ -72,9 +72,12 @@ class Profile(models.Model):
         super(Profile, self).save(*args, **kwargs)
 
 
-# Links to post_save and signals Profile creation when User is created
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
+    """
+    Links to post_save and signals Profile creation
+    when User is created
+    """
     if created:
         Profile.objects.create(owner=instance)
 

@@ -18,10 +18,7 @@ class LikeDetail(generics.RetrieveDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
-        # Retrieve the Follower instance.
         obj = super().get_object()
         if obj.owner != self.request.user:
-            # If the current user is not the owner
-            # of the follower instance, deny access.
             raise permissions.PermissionDenied()
         return obj

@@ -11,7 +11,6 @@ class Like(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        # Ensures a user can only like a post once.
         unique_together = ['owner', 'post']
         ordering = ['-created_at']
 

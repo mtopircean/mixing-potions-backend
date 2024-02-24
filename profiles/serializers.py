@@ -5,16 +5,17 @@ from django.contrib.auth.models import User
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Profile model.
+    Includes fields for email, username, owner, followers, following,
+    followers_count, and following_count.
+    """
     email = serializers.EmailField(source='owner.email', read_only=True)
     username = serializers.CharField(source='owner.username', read_only=True)
     owner = serializers.ReadOnlyField(source='owner.username')
-    # Custom field to get list of followers' nicknames.
     followers = serializers.SerializerMethodField()
-    # Custom field to get list of followed users' nicknames.
     following = serializers.SerializerMethodField()
-    # Serialize the count of followers directly from the model.
     followers_count = serializers.ReadOnlyField()
-    # Serialize the count of following directly from the model.
     following_count = serializers.ReadOnlyField()
 
     class Meta:
@@ -40,8 +41,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         for follower in followers:
             profile = Profile.objects.filter(owner=follower.owner).first()
             if profile and profile.nickname:
-                # If a profile and nickname exist,
-                # append the nickname to the list.
                 follower_nicknames.append(profile.nickname)
             else:
                 follower_nicknames.append(follower.owner.username)
@@ -59,7 +58,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         for followed_user in following:
             profile = Profile.objects.filter(
                 owner=followed_user.followed
-                ).first()
+            ).first()
             if profile and profile.nickname:
                 following_nicknames.append(profile.nickname)
             else:

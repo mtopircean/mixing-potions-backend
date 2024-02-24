@@ -14,8 +14,8 @@ class Condition(models.Model):
 class BodySystem(models.Model):
     """
     Represents the body system that a product targets or is related to.
+    Defines a list of choices for the body system a product can target.
     """
-    # Defines a list of choices for the body system a product can target.
     SYSTEM_CHOICES = [
         ('Nervous & Emotional', 'Nervous & Emotional'),
         ('Respiratory', 'Respiratory'),

@@ -6,7 +6,6 @@ from posts.models import Post
 
 class LikeSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    # Custom field to get the post's title
     title = serializers.SerializerMethodField()
 
     class Meta:
@@ -23,7 +22,6 @@ class LikeSerializer(serializers.ModelSerializer):
         """
         owner_id = self.context['request'].user.id
         post_id = data.get('post')
-        # Check if a like by this user for this post already exists
         if Like.objects.filter(
             owner_id=owner_id, post_id=post_id
                               ).exists():

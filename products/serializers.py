@@ -31,19 +31,17 @@ class BodySystemSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     """
     Serializer for the Product model, including custom methods
+    When serializing, the name of each related
+    Condition instance is used instead of the pk.
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     condition = serializers.SlugRelatedField(
         many=True,
-        # When serializing, the name of each related
-        # Condition instance is used instead of the pk.
         slug_field='name',
         queryset=Condition.objects.all()
     )
     body_systems = serializers.SlugRelatedField(
         many=True,
-        # When serializing, the name of each related
-        # Condition instance is used instead of the pk.
         slug_field='name',
         queryset=BodySystem.objects.all()
     )
