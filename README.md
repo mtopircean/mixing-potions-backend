@@ -1,110 +1,382 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Mixing-Potions API
 
-Welcome Marius Topircean,
+The mixing-potions api is an application which was designed to support the backend of a social network platform supporting users in creating mixes of natural products, more specifically essential oils and in sharing them with other users 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Application is designed to allow users to use an existing database of products, mix them and share it as posts with various functionalities attached.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+Main features:
 
-## Gitpod Reminders
+- Authentication of users
+- Creation of products and body system filters through an excel import/export admin panel functionality
+- Administration of the product/profile/post database by the admin from backend of the API using the Django administration panel
+- Endpoints for photos upload(for customized posts), post and product storage/processing
+- Endpoints supporting user interactions on Profiles, Likes, Comments, Followers and Posts
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+In order to access the deployed API, please use the link bellow:
 
-`python3 -m http.server`
+[MIXING POTIONS BACKEND](https://mixing-potions-drf-api-0a8cbdf11dd2.herokuapp.com/)
 
-A blue button should appear to click: _Make Public_,
 
-Another blue button should appear to click: _Open Browser_.
+## Table of Contents
+- [Scope](#scope) 
+- [Features](#features)
+    - [Features Implemented](#features-implemented)
+    - [Future development](#future-development)
+- [Agile Methodology](#agile-methodology)
+    - [Project planning](#project-planning)
+    - [Milestones](#milestones)
+    - [Sprints](#sprints)
+    - [Epics](#epics)
+    - [User stories](#user-stories)
+    - [Prioritization](#prioritization)
+- [Database structure](#database-structure)
+- [API Endpoints](#api-endpoints)
+- [Technologies Used](#technologies-used)
+    - [Programming languages](#programming-languages)
+    - [Python add-ons](#python-add-ons)
+    - [Other](#other)
+- [Testing](#testing)
+    - [Code formating](#code-formating)
+    - [Unittest](#unittest)
+    - [Manual Testing](#manual-testing)
+- [Bugs and issues](#bugs-and-issues)
+    - [Fixed](#fixed)
+    - [Open](#open)
+- [Deployment](#deployment)
+    - [How do Deploy](#how-to-deploy)
+    - [How to Fork](#how-to-fork)
+    - [How to Clone](#how-to-clone)
+- [Credits](#credits)
+    - [Internal](#internal)
+    - [External](#external)
+- [About author](#about-author)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## Scope
 
-A blue button should appear to click: _Make Public_,
+Project idea came on top of the previous submitted project, especially as an extension to PP4 – Essential Oils website. It comes as an extension to a tool which allows users to search products based on specific conditions.
 
-Another blue button should appear to click: _Open Browser_.
+Extension and the scope represents a method/application in which users can share their experiences and the different variations they have used the products and their results. It offers the other users to take informed and documented decision when using the products. 
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+It also builds a community around the products and the administrator and offers a more targeted way of interaction. The features planned for future implementation will build further on the scope of the application.
 
-To log into the Heroku toolbelt CLI:
+## Features
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Features implemented
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+-  Profile creation: Users can sign up and login. Sign-up process is responsible for profile creation.
+-  Product and body system creation: admins and staff can create the products used for posts through an import/export excel system managed through the backend of the API app; feature and product administration is restricted to administrators
 
-------
+-  Post creation: users can create posts with multiple functionality options allowing them to use products/product combinations in order to create a product mix recommendation; users have also the option to upload their own image when creating a product, model for post being setup in order to allow it to take an image
 
-## Release History
+-  User ranking option: User avatar/photo is set conditioned on a ranking that is allocated to the user; at the moment this is done backend manually, but front end application will build on this in order to set the ranking automatically based on number of likes a users has on a post or number of followers
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+-  Post liking/un-liking: Users have the ability to like each others posts or unlike them; security feature exists not allowing users to like or unlike their own posts
 
-**September 20 2023:** Update Python version to 3.9.17.
+-  User following/unfollowing: Users have the ability to follow or un-follow each other; security feature build so they don`t have the capability to follow themselves
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+-  Post comments: Users have the ability to comment on another users post, with administrators having the ability to moderate it
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+-  Filtering and searching functionality: offers the ability to filter, search and sort the various databases for better result feedback
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### Future development
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+-  Improved product management: allow the administrators to be able to add products and body system options outside of the standard administrator panel, by adding individual products
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+-  Introduction of “condition” as a further enhancement in user post creation functionality
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+-  User messaging system to be introduced at a later stage
+-  Groups creation: in order to allow a specific user to create their groups in order to recommend mixes of products in a more targeted way
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+## Agile methodology
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+Development of the project was build around the Agile methodology and considered the applicable planes:
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+STRATEGY: Understanding the backend objectives and translating them into a Kanban system focused around epics, stories, milestones and allocating the effort necessary to complete them
 
-------
+SCOPE: Defining the objective/direction of the application through definition of user stories
 
-## FAQ about the uptime script
+STRUCTURE : which represented the data models and API endpoints design and definition
 
-**Why have you added this script?**
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+SURFACE and SKELETON are to be further defined as part of the front-end application – link to kanban here:
 
-**How will this affect me?**
+### Project planning
+![Current Kanban](/testing/images/kanban-current-board.png)
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+Prioritization was set in a very logical manner by creating key milestones connected to Sprints and to Epics. This has allowed a very targeted approach by allowing focus on specific deliverables and seeing them to completion.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+User stories where created to sustain the key deliverables.
 
-**So….?**
+Overview of project status as of 24.02.2024:
+![Current Kanban](/testing/images/kanban-current.png)
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
 
-**Can I opt out?**
+### Milestones
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+Total of 3 milestones created around following project delivery objectives:
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+- Testing and cleanup
+- Extended features
+- Basic functionality
 
-**Anything more?**
+### Sprints
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+Total of 3 Sprints created closely connected to Epics and key deliverables and Epics focus points.
 
----
+### Epics
 
-Happy coding!
+Total of 4 Epics created with very targeted action of functionality deliverable. This are further broken down into Stories breaking the deliverable into more targeted actions.
+
+Epics focus on 4 elements:
+- Setup and deployment
+- Functionality: basic and extended
+- Documentation
+
+EPICS:
+
+EPIC 1: Setup and Deployment
+
+EPIC 2: Create basic functionality
+
+EPIC 3: Create extended functionality
+
+EPIC 4: Create documentation & Testing
+
+### User stories
+
+A total of 12 user stories created around key applications functionality.
+Validation and tracking of user stories completion and status is linked to epics and milestones, but even more to a prioritization based on importance in project deliverable and to a an effort allocation system.
+
+Each EPIC contains 3 user stories, each containing a specific level of acceptance criteria that ensures the stories are fulfilled accordingly.
+
+USER STORIES:
+
+Installation and deployment:
+
+User Story 1.1: Install and Configure basic dependencies
+
+User Story 1.2: Deploy to Heroku
+
+User Story 1.3: Create Document Hierarchy and Structure 
+
+Basic functionality:
+
+User Story 2.1: Create Profiles App
+
+User Story 2.2: Create Products App
+
+User Story 2.3: Create Posts App
+
+
+Extended functionality:
+
+User Story 3.1: Create Likes App
+
+User Story 3.2: Create Followers App
+
+User Story 3.3: Create Comments App
+
+
+Testing and Readme:
+
+User Story 4.1: Create README File
+
+User Story 4.2: Perform Unittest Testing
+
+User Story 4.3: Create TESTING Document
+
+
+### Prioritization
+
+
+
+Prioritization was done based on 2 criteria:
+- Importance allocation: Must – Should – Could: no could or Would existing at the moment in the plan
+
+- Effort(established by using a middle point from an effort/effect impact and allocating the stories aligned to this reference point): using story points;
+
+
+
+## Database structure:
+
+Following diagram offers an understanding around the design direction taken when defining the models and data structure.
+
+There is a clear level of customization done through the introduction of some customized features around the Profile model which allows user to be allocated a specific ranking.
+
+Further customization is done also around the Post model which integrates the Products one in order to allow users to build a Post by accessing the Product model.
+
+Profile, Post and Products are the core of the application with enhanced features and structure.
+
+
+Link to diagram:
+![db diagram](/testing/images/db_diagram.png)
+
+
+
+## API Endpoints
+
+Application provides the following API endpoints:
+
+## Technologies Used
+
+### Frameworks and Languages
+
+The API is built with [Django Rest Framework](https://www.django-rest-framework.org/), a [Django](https://www.djangoproject.com/) based toolkit for building APIs with Python.
+
+### Additional Python Packages
+
+asgiref==3.7.2: ASGI reference implementation for handling asynchronous requests.
+
+cloudinary==1.38.0: Python SDK for interacting with the Cloudinary API.
+
+diff-match-patch==20230430: Library for performing text diffs and patching.
+
+dj-database-url==0.5.0: Utility for parsing database connection URLs in Django.
+
+dj-rest-auth==2.1.9: Django app providing REST API endpoints for authentication.
+
+Django==3.2.23: High-level Python web framework for rapid development.
+
+django-allauth==0.44.0: Complete authentication system for Django projects.
+
+django-cloudinary-storage==0.3.0: Django storage backend for Cloudinary.
+
+django-cors-headers==4.3.1: Django app for handling Cross-Origin Resource Sharing (CORS) headers.
+
+django-filter==23.5: Django app for dynamic queryset filtering.
+
+django-import-export==3.3.6: Utilities for importing and exporting data in Django.
+
+djangorestframework==3.14.0: Toolkit for building Web APIs in Django.
+
+djangorestframework-simplejwt==5.3.1: JWT authentication for Django REST Framework.
+
+et-xmlfile==1.1.0: Library for reading and writing Excel .xlsx files.
+
+gunicorn==21.2.0: WSGI HTTP server for UNIX.
+
+MarkupPy==1.14: Lightweight library for generating HTML markup.
+
+oauthlib==3.2.2: Library for implementing OAuth 1.0 and OAuth 2.0 protocols.
+
+odfpy==1.4.1: Library for working with OpenDocument Format (ODF) files.
+
+openpyxl==3.1.2: Library for reading and writing Excel .xlsx files.
+
+pillow==10.2.0: Python Imaging Library (PIL) fork for image manipulation.
+
+psycopg2==2.9.9: PostgreSQL adapter for Python.
+
+PyJWT==2.8.0: Library for encoding and decoding JSON Web Tokens (JWT).
+
+python3-openid==3.2.0: Library for working with OpenID authentication.
+
+pytz==2023.3.post1: Library for working with time zones.
+
+requests-oauthlib==1.3.1: Library for OAuth authentication with requests.
+
+sqlparse==0.4.4: Library for parsing SQL queries.
+
+tablib==3.5.0: Library for handling tabular data in various formats.
+
+xlrd==2.0.1: Library for reading data from Excel .xls files.
+
+xlwt==1.3.0: Library for writing data to Excel .xls files.
+
+### Other Software
+
+- [GitHub](https://github.com/) used for project storage
+- [Heroku](https://heroku.com/) is used to deploy the project
+- [ElephantSQL](https://www.elephantsql.com/) is used for the project's PostgreSQL database.
+- [Cloudinary](https://cloudinary.com/) is used to store media files and for processing uploaded audio files.
+- [GitPod](https://gitpod.com/) my IDE of choice
+- [DrawSQL](https://drawsql.app/) used to create my db diagram
+- [CI Python Linter](https://pep8ci.herokuapp.com/) Used to validate my code for formating compliance
+
+## Testing
+
+Testing has been implemented through a combination of manual and automated testing.
+
+### Code formatting
+
+Code passed through the PEP8 Code formatter and passed without any deviations from standard.
+![pep8](/testing/images/pep8_noerror.png)
+
+
+### Unittest
+
+Unittest implemented for all applications basic functionality and results can be seen bellow:
+-  Profiles:
+![Alt](/testing/images/unitttest_profiles.png)
+-  Posts:
+![Alt](/testing/images/unitttest_posts.png)
+-  Products:
+![Alt](/testing/images/unitttest_products.png)
+-  Followers:
+![Alt](/testing/images/unitttest_followers.png)
+-  Comments:
+![Alt](/testing/images/unitttest_comments.png)
+-  Likes:
+![Alt](/testing/images/unitttest_likes.png)
+
+### Manual testing
+
+Application functionality is tested and can be found at the link bellow:
+[TESTING.MD](/testing/TESTING.md)
+
+
+## Deployment
+
+Use your own instructions from previous readme.
+
+### How to Deploy
+Deployment of the website was done using HEROKU, and can be accessed here [MIXING POTIONS BACKEND](https://mixing-potions-drf-api-0a8cbdf11dd2.herokuapp.com/).
+
+### How to Fork
+To fork the repository:
+
+1. Log in (or sign up) to GitHub.
+2. Go to the repository for this project, [mtopircean/mixing-potions-backend](https://github.com/mtopircean/mixing-potions-backend)
+3. Click the Fork button in the top right corner.
+
+### How to Clone
+To clone the repository:
+
+1. Log in (or sign up) to GitHub.
+2. Go to the repository for this project, [mtopircean/mixing-potions-backend](https://github.com/mtopircean/essentials-by-livia)
+3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
+5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
+
+## Credits
+
+### Sources
+
+The initial setup and the general structure of the project are based on the instructions from the Code Institute *Django Rest Framework* walkthrough project ([source code](https://github.com/Code-Institute-Solutions/drf-api/)). The basic structure of the models (and their serializers), as well as the filtering functionality has been inspired from the walkthrough project. This was further enhanced through the introduction of customization in Models like Products, Profiles, Posts and more through introductions of other functionalities like Slugs to display objects instead of ids.
+
+
+### Acknowledgements
+
+- I would like to thank my Code Institute mentor Mo for his support and guidance during the development of the project
+- I would like to thank the Code Institute tutors for their excellent and continuous support and patience during the development of the application
+
+## About author
+Marius Topircean is an aspiring software-developer on a journey to develop and learn his place into the developer community.
+
+My contact details are:
+
+Email: mtopircean@yahoo.com
+
+Phone: +353857642212
+
+Slack: Marius Topircean
+
+GitHub: mtopircean
+
+LinkedIn: [Marius Topircean](https://www.linkedin.com/in/marius-t-7b5592124)
