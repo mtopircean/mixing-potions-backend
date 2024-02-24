@@ -13,7 +13,7 @@ class PostAPITests(TestCase):
                                              password='1234')
         self.client.force_authenticate(user=self.user)
         self.post = Post.objects.create(title='Post',
-                                        content='This is a post',
+                                        description='This is a post',
                                         owner=self.user)
 
     def test_retrieve_post(self):
