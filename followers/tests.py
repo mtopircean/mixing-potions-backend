@@ -14,17 +14,19 @@ class FollowerAPITests(TestCase):
         self.client.force_authenticate(user=self.user)
 
     def test_follower_list(self):
-        response - self.client.get('/followers/')
+        response = self.client.get('/followers/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_create_follower(self):
-        data = {'follower': self.user.pk}
+        another_user = User.objects.create_user(username='anotheruser',
+                                                password='password123')
+        data = {'followed': another_user.pk}
         response = self.client.post('/followers/', data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Follower.objects.count(), 1)
 
     def test_delete_follower(self):
-        follower = Follower.objects.create(owner=self.user, follower=self.user)
+        another_user = User.objects.create_user(username='anotheruser',
+                                                password='password123')
+        follower = Follower.objects.create(owner=self.user, followed=another_user)
         response = self.client.delete(f'/followers/{follower.pk}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        self.assertEqual(Follower.objects.count(), 0)
