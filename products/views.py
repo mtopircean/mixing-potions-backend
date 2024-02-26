@@ -3,13 +3,14 @@ from rest_framework.filters import OrderingFilter, SearchFilter
 from .models import Product
 from .serializers import ProductSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from mixing_potions_api.permissions import IsOwnerOrReadOnly
 
 
 class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [IsAuthenticated, IsAdminUser]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     filter_backends = [
         OrderingFilter,
