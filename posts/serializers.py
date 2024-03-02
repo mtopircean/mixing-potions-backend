@@ -9,6 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     owner_nickname = serializers.SerializerMethodField()
     liked_by = serializers.SerializerMethodField()
+    like_count = serializers.SerializerMethodField()
     is_owner = serializers.SerializerMethodField()
     products = serializers.PrimaryKeyRelatedField(
         many=True,
@@ -22,7 +23,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'description', 'created_at', 'updated_at',
             'image', 'owner', 'owner_nickname', 'products', 'liked_by',
-            'is_owner',
+            'is_owner', 'like_count',
         ]
 
     def get_is_owner(self, obj):
@@ -34,6 +35,9 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_liked_by(self, obj):
         return [like.owner.username for like in obj.likes.all()]
+    
+    def get_like_count(self, obj):
+        return obj.likes.count()
 
     def to_representation(self, instance):
         """
