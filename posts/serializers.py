@@ -3,6 +3,8 @@ from .models import Post
 from products.models import Product
 from products.serializers import ProductSerializer
 from likes.models import Like
+from comments.serializers import CommentSerializer
+from comments.models import Comment
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -10,6 +12,8 @@ class PostSerializer(serializers.ModelSerializer):
     owner_nickname = serializers.SerializerMethodField()
     liked_by = serializers.SerializerMethodField()
     like_count = serializers.SerializerMethodField()
+    comments = CommentSerializer(many=True, read_only=True)
+    comment_count = serializers.SerializerMethodField()
     is_owner = serializers.SerializerMethodField()
     products = serializers.PrimaryKeyRelatedField(
         many=True,
@@ -23,7 +27,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'description', 'created_at', 'updated_at',
             'image', 'owner', 'owner_nickname', 'products', 'liked_by',
-            'is_owner', 'like_count',
+            'is_owner', 'like_count', 'comment_count', 'comments',
         ]
 
     def get_is_owner(self, obj):
@@ -38,6 +42,9 @@ class PostSerializer(serializers.ModelSerializer):
     
     def get_like_count(self, obj):
         return obj.likes.count()
+    
+    def get_comment_count(self, obj):
+        return Comment.objects.filter(post=obj).count()
 
     def to_representation(self, instance):
         """
