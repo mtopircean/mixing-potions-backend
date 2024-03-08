@@ -39,7 +39,7 @@ class Profile(models.Model):
     member_since = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(
-        upload_to='images/', default='../apprentice_vcpdlr'
+        upload_to='images/', default='../def_profile_t6zlys'
     )
 
     @property
@@ -68,7 +68,7 @@ class Profile(models.Model):
         elif self.user_status == self.USER_STATUS_MASTER:
             self.image = '../master_ebljsl'
         else:
-            self.image = '../default_profile_kcxezz'
+            self.image = '../def_profile_t6zlys'
         super(Profile, self).save(*args, **kwargs)
 
 

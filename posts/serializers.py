@@ -27,7 +27,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'description', 'created_at', 'updated_at',
             'image', 'owner', 'owner_nickname', 'products', 'liked_by',
-            'is_owner', 'like_count', 'comment_count', 'comments',
+            'is_owner', 'like_count', 'comment_count', 'comments', 'pk',
         ]
 
     def get_is_owner(self, obj):
