@@ -5,11 +5,13 @@ from products.serializers import ProductSerializer
 from likes.models import Like
 from comments.serializers import CommentSerializer
 from comments.models import Comment
+from profiles.models import Profile
 
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     owner_id = serializers.ReadOnlyField(source='owner.pk')
+    owner_image = serializers.SerializerMethodField()
     owner_nickname = serializers.SerializerMethodField()
     liked_by = serializers.SerializerMethodField()
     like_count = serializers.SerializerMethodField()
@@ -29,7 +31,7 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'title', 'description', 'created_at', 'updated_at',
             'image', 'owner', 'owner_nickname', 'products', 'liked_by',
             'is_owner', 'like_count', 'comment_count', 'comments',
-            'owner_id'
+            'owner_id', 'owner_image',
         ]
 
     def get_is_owner(self, obj):
@@ -38,6 +40,13 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_owner_nickname(self, obj):
         return obj.get_owner_nickname()
+    
+    def get_owner_image(self, obj):
+        try:
+            profile = Profile.objects.get(owner=obj.owner)
+            return profile.image.url
+        except Profile.DoesNotExist:
+            return None
 
     def get_liked_by(self, obj):
         return [like.owner.username for like in obj.likes.all()]
