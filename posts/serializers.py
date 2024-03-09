@@ -8,7 +8,7 @@ from comments.models import Comment
 
 
 class PostSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
+    owner = serializers.ReadOnlyField(source='owner.pk')
     owner_nickname = serializers.SerializerMethodField()
     liked_by = serializers.SerializerMethodField()
     like_count = serializers.SerializerMethodField()
