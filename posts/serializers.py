@@ -8,7 +8,8 @@ from comments.models import Comment
 
 
 class PostSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.pk')
+    owner = serializers.ReadOnlyField(source='owner.username')
+    owner_id = serializers.ReadOnlyField(source='owner.pk')
     owner_nickname = serializers.SerializerMethodField()
     liked_by = serializers.SerializerMethodField()
     like_count = serializers.SerializerMethodField()
@@ -27,7 +28,8 @@ class PostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'description', 'created_at', 'updated_at',
             'image', 'owner', 'owner_nickname', 'products', 'liked_by',
-            'is_owner', 'like_count', 'comment_count', 'comments', 'pk',
+            'is_owner', 'like_count', 'comment_count', 'comments',
+            'owner_id'
         ]
 
     def get_is_owner(self, obj):
