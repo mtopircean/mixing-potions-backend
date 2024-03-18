@@ -32,7 +32,8 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'title', 'description', 'created_at', 'updated_at',
             'image', 'owner', 'owner_nickname', 'products', 'liked_by',
             'is_owner', 'like_count', 'comment_count', 'comments',
-            'owner_id', 'owner_image', 'like_id',
+            'owner_id', 'owner_image', 
+            'like_id',
         ]
 
     def get_is_owner(self, obj):
@@ -58,7 +59,7 @@ class PostSerializer(serializers.ModelSerializer):
     def get_like_id(self, obj):
         request = self.context.get('request')
         user = request.user if request else None
-        if user:
+        if user and not user.is_anonymous:
             like = Like.objects.filter(post=obj, owner=user).first()
             if like:
                 return like.id
