@@ -47,8 +47,7 @@ DEBUG = True
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-ALLOWED_HOSTS = ['8000-mtopircean-mixingpotion-5jphsz1i8n6.ws-eu108.gitpod.io',
-                 'localhost',
+ALLOWED_HOSTS = ['8000-mtopircean-mixingpotion-5jphsz1i8n6.ws-eu110.gitpod.io',
                  'mixing-potions-drf-api-0a8cbdf11dd2.herokuapp.com']
 
 INSTALLED_APPS = [

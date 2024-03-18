@@ -15,6 +15,7 @@ class PostSerializer(serializers.ModelSerializer):
     owner_nickname = serializers.SerializerMethodField()
     liked_by = serializers.SerializerMethodField()
     like_count = serializers.SerializerMethodField()
+    like_id = serializers.SerializerMethodField()
     comments = CommentSerializer(many=True, read_only=True)
     comment_count = serializers.SerializerMethodField()
     is_owner = serializers.SerializerMethodField()
@@ -31,7 +32,7 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'title', 'description', 'created_at', 'updated_at',
             'image', 'owner', 'owner_nickname', 'products', 'liked_by',
             'is_owner', 'like_count', 'comment_count', 'comments',
-            'owner_id', 'owner_image',
+            'owner_id', 'owner_image', 'like_id',
         ]
 
     def get_is_owner(self, obj):
@@ -53,6 +54,15 @@ class PostSerializer(serializers.ModelSerializer):
     
     def get_like_count(self, obj):
         return obj.likes.count()
+    
+    def get_like_id(self, obj):
+        request = self.context.get('request')
+        user = request.user if request else None
+        if user:
+            like = Like.objects.filter(post=obj, owner=user).first()
+            if like:
+                return like.id
+        return None
     
     def get_comment_count(self, obj):
         return Comment.objects.filter(post=obj).count()
