@@ -12,11 +12,12 @@ class FollowerSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     followed_name = serializers.ReadOnlyField(source='followed.username')
     followed_nickname = serializers.SerializerMethodField()
+    followed_profile_id = serializers.SerializerMethodField()
 
     class Meta:
         model = Follower
         fields = ['id', 'owner', 'followed', 'followed_name',
-                  'followed_nickname', 'created_at']
+                  'followed_nickname', 'created_at', 'followed_profile_id']
 
     def get_followed_nickname(self, obj):
         """
@@ -24,6 +25,13 @@ class FollowerSerializer(serializers.ModelSerializer):
         """
         profile = Profile.objects.filter(owner=obj.followed).first()
         return profile.nickname if profile else None
+    
+    def get_followed_profile_id(self, obj):
+        """
+        Retrieve the profile ID of the followed user.
+        """
+        profile = Profile.objects.filter(owner=obj.followed).first()
+        return profile.id if profile else None
 
     def validate(self, data):
         """
