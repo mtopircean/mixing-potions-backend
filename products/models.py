@@ -5,7 +5,7 @@ class Condition(models.Model):
     """
     Represents a health condition that a product can address.
     """
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=500)
 
     def __str__(self):
         return self.name
@@ -27,7 +27,7 @@ class BodySystem(models.Model):
         ('Skin and connective tissues', 'Skin and connective tissues'),
         ('Muscles, bones, ligaments', 'Muscles, bones, ligaments'),
     ]
-    name = models.CharField(max_length=255, choices=SYSTEM_CHOICES)
+    name = models.CharField(max_length=500, choices=SYSTEM_CHOICES)
 
     def __str__(self):
         return self.name
