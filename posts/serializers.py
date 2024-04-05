@@ -25,9 +25,6 @@ class PostSerializer(serializers.ModelSerializer):
         queryset=Product.objects.all(),
         write_only=True
     )
-    image = serializers.ImageField(validators=[
-        FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp']),
-    ])
 
     class Meta:
 
@@ -87,11 +84,3 @@ class PostSerializer(serializers.ModelSerializer):
         ).data
         return representation
     
-    def validate_image(self, value):
-        if value.size > 2 * 1024 * 1024:
-            raise serializers.ValidationError('Image size larger than 2MB!')
-        if value.height > 4096:
-            raise serializers.ValidationError('Image height larger than 4096px!')
-        if value.width > 4096:
-            raise serializers.ValidationError('Image width larger than 4096px!')
-        return value
