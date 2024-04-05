@@ -39,7 +39,7 @@ class Profile(models.Model):
     member_since = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(
-        upload_to='images/', default='../default_profile_cci3e7'
+        upload_to='images/',
     )
 
     @property
