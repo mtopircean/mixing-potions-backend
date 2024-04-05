@@ -1,3 +1,4 @@
+from django.core.validators import FileExtensionValidator
 from rest_framework import serializers
 from .models import Post
 from products.models import Product
@@ -25,9 +26,7 @@ class PostSerializer(serializers.ModelSerializer):
         write_only=True
     )
     image = serializers.ImageField(validators=[
-        serializers.FileExtensionValidator(allowed_extensions=['jpg', 'jpeg',
-                                                               'png', 'webp']),
-        serializers.ImageFileValidator(max_length=None, allow_empty_file=False),
+        FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp']),
     ])
 
     class Meta:
