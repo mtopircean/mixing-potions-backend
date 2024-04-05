@@ -68,7 +68,7 @@ class Profile(models.Model):
         elif self.user_status == self.USER_STATUS_MASTER:
             self.image = '../master_ebljsl'
         else:
-            self.image = '../def_profile_t6zlys'
+            self.image = '../default_profile_cci3e7'
         super(Profile, self).save(*args, **kwargs)
 
 
