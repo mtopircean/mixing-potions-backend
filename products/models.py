@@ -23,7 +23,7 @@ class BodySystem(models.Model):
         ('Cardiovascular', 'Cardiovascular'),
         ('Urinary', 'Urinary'),
         ('Endocrine and Reproductive', 'Endocrine and Reproductive'),
-        ('Lymphatic/Imune', 'Lymphatic/Imune'),
+        ('Lymphatic/Immune', 'Lymphatic/Immune'),
         ('Skin and connective tissues', 'Skin and connective tissues'),
         ('Muscles, bones, ligaments', 'Muscles, bones, ligaments'),
     ]
