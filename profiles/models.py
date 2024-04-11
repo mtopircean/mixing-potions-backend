@@ -63,11 +63,11 @@ class Profile(models.Model):
         user status
         """
         if self.user_status == self.USER_STATUS_APPRENTICE:
-            self.image = '../apprentice_vcpdlr'
+            self.image = '../wwjiv5nuaev7ndzpxwho'
         elif self.user_status == self.USER_STATUS_EXPERIENCED:
-            self.image = '../experienced_vmfnxw'
+            self.image = '../nwyu2qw1x3zqqgl0pigs'
         elif self.user_status == self.USER_STATUS_MASTER:
-            self.image = '../master_ebljsl'
+            self.image = '../m66tiwaznwpjufm85yoh'
         elif self.user_status == self.USER_STATUS_BASIC:
             self.image = '../default_profile_duvxwt'
         else:
