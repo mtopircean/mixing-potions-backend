@@ -33,7 +33,7 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'title', 'description', 'created_at', 'updated_at',
             'image', 'owner', 'owner_nickname', 'products', 'liked_by',
             'is_owner', 'like_count', 'comment_count', 'comments',
-            'owner_id', 'owner_image', 
+            'owner_id', 'owner_image',
             'like_id',
         ]
 
@@ -43,7 +43,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_owner_nickname(self, obj):
         return obj.get_owner_nickname()
-    
+
     def get_owner_image(self, obj):
         try:
             profile = Profile.objects.get(owner=obj.owner)
@@ -53,10 +53,10 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_liked_by(self, obj):
         return [like.owner.username for like in obj.likes.all()]
-    
+
     def get_like_count(self, obj):
         return obj.likes.count()
-    
+
     def get_like_id(self, obj):
         request = self.context.get('request')
         user = request.user if request else None
@@ -65,7 +65,7 @@ class PostSerializer(serializers.ModelSerializer):
             if like:
                 return like.id
         return None
-    
+
     def get_comment_count(self, obj):
         return Comment.objects.filter(post=obj).count()
 
@@ -83,4 +83,3 @@ class PostSerializer(serializers.ModelSerializer):
             instance.products.all(), many=True
         ).data
         return representation
-    

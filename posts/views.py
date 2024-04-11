@@ -15,16 +15,21 @@ class PostList(generics.ListCreateAPIView):
     filter_backends = [
         OrderingFilter,
         SearchFilter
-        ]
-    ordering_fields = ['title', 'description', 'created_at', 'updated_at',
-                 'owner__username', 'products__name', 'products__condition__name',
-                 'products__body_systems__name']
-    search_fields = ['title', 'description', 'created_at', 'updated_at',
-                 'owner__username', 'products__name', 'products__condition__name',
-                 'products__body_systems__name']
+    ]
+    ordering_fields = ['title', 'description', 'created_at',
+                       'updated_at',
+                       'owner__username', 'products__name',
+                       'products__condition__name',
+                       'products__body_systems__name']
+    search_fields = ['title', 'description', 'created_at',
+                     'updated_at',
+                     'owner__username', 'products__name',
+                     'products__condition__name',
+                     'products__body_systems__name']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()

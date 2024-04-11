@@ -106,7 +106,7 @@ STRUCTURE : which represented the data models and API endpoints design and defin
 SURFACE and SKELETON are to be further defined as part of the front-end application – link to kanban here:
 
 ### Project planning
-![Current Kanban](/testing/images/kanban-current-board.png)
+![Current Kanban](/testing/images/kanban_current_board.png)
 
 
 Prioritization was set in a very logical manner by creating key milestones connected to Sprints and to Epics. This has allowed a very targeted approach by allowing focus on specific deliverables and seeing them to completion.
@@ -114,7 +114,7 @@ Prioritization was set in a very logical manner by creating key milestones conne
 User stories where created to sustain the key deliverables.
 
 Overview of project status as of 24.02.2024:
-![Current Kanban](/testing/images/kanban-current.png)
+![Current Kanban](/testing/images/kanban_current.png)
 
 
 ### Milestones
@@ -344,6 +344,8 @@ Unittest implemented for all applications basic functionality and results can be
 Application functionality is tested and can be found at the link bellow:
 [TESTING.MD](/testing/TESTING.md)
 
+## Bugs and issues
+No known bugs so far during my testing.
 
 ## Deployment
 

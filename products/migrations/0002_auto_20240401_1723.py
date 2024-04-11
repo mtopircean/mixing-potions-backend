@@ -13,7 +13,17 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='bodysystem',
             name='name',
-            field=models.CharField(choices=[('Nervous & Emotional', 'Nervous & Emotional'), ('Respiratory', 'Respiratory'), ('Digestive', 'Digestive'), ('Cardiovascular', 'Cardiovascular'), ('Urinary', 'Urinary'), ('Endocrine and Reproductive', 'Endocrine and Reproductive'), ('Lymphatic/Imune', 'Lymphatic/Imune'), ('Skin and connective tissues', 'Skin and connective tissues'), ('Muscles, bones, ligaments', 'Muscles, bones, ligaments')], max_length=500),
+            field=models.CharField(choices=[
+                ('Nervous & Emotional', 'Nervous & Emotional'),
+                ('Respiratory', 'Respiratory'),
+                ('Digestive', 'Digestive'),
+                ('Cardiovascular', 'Cardiovascular'),
+                ('Urinary', 'Urinary'),
+                ('Endocrine and Reproductive', 'Endocrine and Reproductive'),
+                ('Lymphatic/Imune', 'Lymphatic/Imune'),
+                ('Skin and connective tissues', 'Skin and connective tissues'),
+                ('Muscles, bones, ligaments', 'Muscles, bones, ligaments')
+            ], max_length=500),
         ),
         migrations.AlterField(
             model_name='condition',

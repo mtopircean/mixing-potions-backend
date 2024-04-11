@@ -16,7 +16,7 @@ class ProfileList(generics.ListAPIView):
     filter_backends = [
         OrderingFilter,
         SearchFilter
-        ]
+    ]
     ordering_fields = [
         'user_status', 'member_since', 'updated_at',
         'followers_count', 'following_count'
