@@ -16,6 +16,13 @@ In order to access the deployed API, please use the link bellow:
 
 [MIXING POTIONS BACKEND](https://mixing-potions-drf-api-0a8cbdf11dd2.herokuapp.com/)
 
+To access the final front-end project:
+
+[Heroku App](https://mixing-potions-d88ebb719d59.herokuapp.com/)
+
+[Github Repo](https://github.com/mtopircean/mixing-potions-frontend/)
+
+
 
 ## Table of Contents
 - [Scope](#scope) 
@@ -58,6 +65,12 @@ Project idea came on top of the previous submitted project, especially as an ext
 Extension and the scope represents a method/application in which users can share their experiences and the different variations they have used the products and their results. It offers the other users to take informed and documented decision when using the products. 
 
 It also builds a community around the products and the administrator and offers a more targeted way of interaction. The features planned for future implementation will build further on the scope of the application.
+
+To access the final front-end project:
+
+[Heroku App](https://mixing-potions-d88ebb719d59.herokuapp.com/)
+
+[Github Repo](https://github.com/mtopircean/mixing-potions-frontend/)
 
 ## Features
 
