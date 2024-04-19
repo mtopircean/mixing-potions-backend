@@ -53,6 +53,7 @@ To access the final front-end project:
     - [How do Deploy](#how-to-deploy)
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
+    - [Heroku Deployment](#heroku-deployment)
 - [Credits](#credits)
     - [Internal](#internal)
     - [External](#external)
@@ -119,7 +120,7 @@ STRUCTURE : which represented the data models and API endpoints design and defin
 SURFACE and SKELETON are to be further defined as part of the front-end application – link to kanban here:
 
 ### Project planning
-![Current Kanban](/testing/images/kanban_current_board.png)
+![Current Kanban](/docs/images/kanban_current_board.png)
 
 
 Prioritization was set in a very logical manner by creating key milestones connected to Sprints and to Epics. This has allowed a very targeted approach by allowing focus on specific deliverables and seeing them to completion.
@@ -127,7 +128,7 @@ Prioritization was set in a very logical manner by creating key milestones conne
 User stories where created to sustain the key deliverables.
 
 Overview of project status as of 24.02.2024:
-![Current Kanban](/testing/images/kanban_current.png)
+![Current Kanban](/docs/images/kanban_current.png)
 
 
 ### Milestones
@@ -228,7 +229,7 @@ Profile, Post and Products are the core of the application with enhanced feature
 
 
 Link to diagram:
-![db diagram](/testing/images/db_diagram.png)
+![db diagram](/docs/images/db_diagram.png)
 
 
 
@@ -383,11 +384,62 @@ To clone the repository:
 4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
 
+### Heroku Deployment
+The project was deployed to [Heroku](https://heroku.com).
+Deployed site can be found [Here](https://mixing-potions-drf-api-0a8cbdf11dd2.herokuapp.com/).
+To deploy, follow this steps:
+
+1. Create an account at https://heroku.com and login. 
+![Alt](/docs/images/heroku_1.png)
+
+2. Create a new app from the [Heroku dashboard](https://dashboard.heroku.com) by clicking on `New` and then on `Create new app`.
+
+![Alt](/docs/images/heroku_2.png)
+3. Create a unique name for your app.
+
+![Alt](/docs/images/heroku_3_4.png)
+4. Choose your region (US or Europe).
+
+![Alt](/docs/images/heroku_3_4.png)
+5. Go to the **Settings** tab and click on **Reveal Config Vars** in the **Config Vars** section.
+
+![Alt](/docs/images/heroku_5.png)
+6. Now, one by one, add the following config vars:
+
+    | Name | Value | 
+    |---|---|
+    | ALLOWED_HOSTS | \<your deployed heroku API app url\> * |
+    | CLIENT_ORIGIN_DEV | \<your development environment url\> ** |
+    | CLIENT_ORIGIN | \<your client url\> |
+    | CLOUDINARY_URL | \<Your cloudinary url\> | 
+    | DATABASE_URL | \<Your database url\> | 
+    | DISABLE_COLLECTSTATIC | 1 |
+    | SECRET_KEY | \<some random string\> |
+
+ Paste the URL without 'https://' or a trailing slash!
+ E.g. "http://localhost:3000" for building a React front end app in a local environment. 
+ This may differ for your IDE.
+
+ ![Alt](/docs/images/heroku_6.png)
+
+7. Select the **Deploy** tab and connect the Heroku app to your GitHub repository.
+
+![Alt](/docs/images/heroku_7.png)
+8. Scroll down and choose the branch you want to deploy in the *Manual deploy* section. Click **Deploy Branch** for your first deployment.
+
+![Alt](/docs/images/heroku_8.png)
+9. Select **View** to open your deployed app.
+
+![Alt](/docs/images/heroku_9.png)
+10. If you encounter issues, use **More** and then **View logs** or check the **Activity** tab for debugging.
+
 ## Credits
 
 ### Sources
 
 The initial setup and the general structure of the project are based on the instructions from the Code Institute *Django Rest Framework* walkthrough project ([source code](https://github.com/Code-Institute-Solutions/drf-api/)). The basic structure of the models (and their serializers), as well as the filtering functionality has been inspired from the walkthrough project. This was further enhanced through the introduction of customization in Models like Products, Profiles, Posts and more through introductions of other functionalities like Slugs to display objects instead of ids.
+
+Took very limited inspiration on the Readme structure and Heroku deployment instructions from  [nacht-falter/sonic-explorers-api](https://github.com/nacht-falter/sonic-explorers-api/blob/main/README.md)
 
 
 ### Acknowledgements
