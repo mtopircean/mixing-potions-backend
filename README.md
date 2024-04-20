@@ -39,7 +39,7 @@ To access the final front-end project:
 - [Database structure](#database-structure)
 - [API Endpoints](#api-endpoints)
 - [Technologies Used](#technologies-used)
-    - [Programming languages](#programming-languages)
+    - [Frameworks and Languages](#frameworks-and-languages)
     - [Python add-ons](#python-add-ons)
     - [Other](#other)
 - [Testing](#testing)
@@ -55,8 +55,8 @@ To access the final front-end project:
     - [How to Clone](#how-to-clone)
     - [Heroku Deployment](#heroku-deployment)
 - [Credits](#credits)
-    - [Internal](#internal)
-    - [External](#external)
+    - [Sources](#sources)
+    - [Aknowledgements](#acknowledgements)
 - [About author](#about-author)
 
 ## Scope
@@ -117,7 +117,7 @@ SCOPE: Defining the objective/direction of the application through definition of
 STRUCTURE : which represented the data models and API endpoints design and definition
 
 
-SURFACE and SKELETON are to be further defined as part of the front-end application – link to kanban here:
+SURFACE and SKELETON are to be further defined as part of the front-end application – link to kanban here: [Front-End Kanban](https://github.com/users/mtopircean/projects/15)
 
 ### Project planning
 ![Current Kanban](/docs/images/kanban_current_board.png)
@@ -257,7 +257,7 @@ Application provides the following API endpoints:
 
 The API is built with [Django Rest Framework](https://www.django-rest-framework.org/), a [Django](https://www.djangoproject.com/) based toolkit for building APIs with Python.
 
-### Additional Python Packages
+### Python add-ons
 
 asgiref==3.7.2: ASGI reference implementation for handling asynchronous requests.
 
@@ -317,7 +317,7 @@ xlrd==2.0.1: Library for reading data from Excel .xls files.
 
 xlwt==1.3.0: Library for writing data to Excel .xls files.
 
-### Other Software
+### Other
 
 - [GitHub](https://github.com/) used for project storage
 - [Heroku](https://heroku.com/) is used to deploy the project
@@ -331,7 +331,7 @@ xlwt==1.3.0: Library for writing data to Excel .xls files.
 
 Testing has been implemented through a combination of manual and automated testing.
 
-### Code formatting
+### Code formating
 
 Code passed through the PEP8 Code formatter and passed without any deviations from standard.
 ![pep8](/testing/images/pep8_noerror.png)
@@ -403,7 +403,7 @@ To fork the repository:
 To clone the repository:
 
 1. Log in (or sign up) to GitHub.
-2. Go to the repository for this project, [mtopircean/mixing-potions-backend](https://github.com/mtopircean/essentials-by-livia)
+2. Go to the repository for this project, [mtopircean/mixing-potions-backend](https://github.com/mtopircean/mixing-potions-backend)
 3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
 4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
