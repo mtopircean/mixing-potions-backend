@@ -50,7 +50,6 @@ To access the final front-end project:
     - [Fixed](#fixed)
     - [Open](#open)
 - [Deployment](#deployment)
-    - [How do Deploy](#how-to-deploy)
     - [How to Fork](#how-to-fork)
     - [How to Clone](#how-to-clone)
     - [Heroku Deployment](#heroku-deployment)
@@ -147,7 +146,7 @@ Total of 3 Sprints created closely connected to Epics and key deliverables and E
 
 Total of 4 Epics created with very targeted action of functionality deliverable. This are further broken down into Stories breaking the deliverable into more targeted actions.
 
-Epics focus on 4 elements:
+Epics focus on 3 elements:
 - Setup and deployment
 - Functionality: basic and extended
 - Documentation
@@ -171,39 +170,65 @@ Each EPIC contains 3 user stories, each containing a specific level of acceptanc
 
 USER STORIES:
 
+List can be found here: [User Stories](https://github.com/mtopircean/mixing-potions-backend/issues?q=is%3Aissue+is%3Aclosed)
+
 Installation and deployment:
 
 User Story 1.1: Install and Configure basic dependencies
 
+As a developer, I can install all the necessary dependencies for my application
+so that the software can run both in development and production environments.
+
 User Story 1.2: Deploy to Heroku
 
+As a developer, I can deploy my application to Heroku so that it can be accessed online for testing and use.
+
 User Story 1.3: Create Document Hierarchy and Structure 
+
+As a developer, I can create a well structured document hierarchy and structure so that navigation is simple, code and databases structures are easy to understand for myself and future developers.
 
 Basic functionality:
 
 User Story 2.1: Create Profiles App
 
+As a developer, I can create a profiles application so that users can manage their profiles through API endpoints.
+
 User Story 2.2: Create Products App
+
+As a developer, I can create a products application so that I can manage products through API endpoints and import/export admin functionality.
 
 User Story 2.3: Create Posts App
 
+As a developer, I can create a posts application that utilizes relationships with users, profiles, and products so that users can create, view, update, and delete posts with detailed information, including associated products and owner details, through API endpoints.
 
 Extended functionality:
 
 User Story 3.1: Create Likes App
 
+As a developer, I can create a likes application so that users can like posts
+
 User Story 3.2: Create Followers App
 
+As a developer, I can create followers application so that users can follow each other
+
 User Story 3.3: Create Comments App
+
+As a developer, I can create a comments application so that users can post and manage comments
 
 
 Testing and Readme:
 
 User Story 4.1: Create README File
 
+As a developer, I can create a README file so that users and developers have a clear understanding of the website's purpose, setup, development process and functionality.
+
 User Story 4.2: Perform Unittest Testing
 
+As a developer, I can develop and execute Unittest tests so that I can ensure the website's functionality works as expected.
+
 User Story 4.3: Create TESTING Document
+
+As a developer, I can create a TESTING document so that I can share details of test cases, results and corrective actions.
 
 
 ### Prioritization
@@ -361,6 +386,9 @@ Application functionality is tested and can be found at the link bellow:
 ## Bugs and issues
 No major issues, just a couple of console errors.
 
+### Fixed
+No issues known at the moment.
+
 ### Open
 
 - One error found which is visible on the deployed site in Chrome only in normal mode. This dissapears when moving to incognito mode.
@@ -389,7 +417,6 @@ CSS missing:
 
 ## Deployment
 
-### How to Deploy
 Deployment of the website was done using HEROKU, and can be accessed here [MIXING POTIONS BACKEND](https://mixing-potions-drf-api-0a8cbdf11dd2.herokuapp.com/).
 
 ### How to Fork
@@ -414,20 +441,25 @@ Deployed site can be found [Here](https://mixing-potions-drf-api-0a8cbdf11dd2.he
 To deploy, follow this steps:
 
 1. Create an account at https://heroku.com and login. 
+
 ![Alt](/docs/images/heroku_1.png)
 
 2. Create a new app from the [Heroku dashboard](https://dashboard.heroku.com) by clicking on `New` and then on `Create new app`.
 
 ![Alt](/docs/images/heroku_2.png)
+
 3. Create a unique name for your app.
 
 ![Alt](/docs/images/heroku_3_4.png)
+
 4. Choose your region (US or Europe).
 
 ![Alt](/docs/images/heroku_3_4.png)
+
 5. Go to the **Settings** tab and click on **Reveal Config Vars** in the **Config Vars** section.
 
 ![Alt](/docs/images/heroku_5.png)
+
 6. Now, one by one, add the following config vars:
 
     | Name | Value | 
@@ -449,12 +481,15 @@ To deploy, follow this steps:
 7. Select the **Deploy** tab and connect the Heroku app to your GitHub repository.
 
 ![Alt](/docs/images/heroku_7.png)
+
 8. Scroll down and choose the branch you want to deploy in the *Manual deploy* section. Click **Deploy Branch** for your first deployment.
 
 ![Alt](/docs/images/heroku_8.png)
+
 9. Select **View** to open your deployed app.
 
 ![Alt](/docs/images/heroku_9.png)
+
 10. If you encounter issues, use **More** and then **View logs** or check the **Activity** tab for debugging.
 
 ## Credits
