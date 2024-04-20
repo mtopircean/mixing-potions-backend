@@ -359,11 +359,35 @@ Application functionality is tested and can be found at the link bellow:
 [TESTING.MD](/testing/TESTING.md)
 
 ## Bugs and issues
-No known bugs so far during my testing.
+No major issues, just a couple of console errors.
+
+### Open
+
+- One error found which is visible on the deployed site in Chrome only in normal mode. This dissapears when moving to incognito mode.
+Normal mode:
+
+![Alt](/testing/images/recaptcha.png)
+
+Incognito mode:
+
+![Alt](/testing/images/recaptcha_incognito.png)
+
+
+- Another console error due to favicon missing. I can`t add a favicon to the backend site.
+
+![Alt](/testing/images/favicon_console.png)
+
+- And lastly, when in DEBUG mode False, when deploying the site in gitpod, it gives me a series of errors which, are not present in the deployed sited. I understand this is related mostly to static not being able to load, and normal errors.
+Discussing with the tutor I was advised that is normal to have them as the website will not load css, not even in admin mode
+
+![Alt](/testing/images/debug_false.png)
+
+CSS missing:
+![Alt](/testing/images/css_missing.png)
+
+
 
 ## Deployment
-
-Use your own instructions from previous readme.
 
 ### How to Deploy
 Deployment of the website was done using HEROKU, and can be accessed here [MIXING POTIONS BACKEND](https://mixing-potions-drf-api-0a8cbdf11dd2.herokuapp.com/).
